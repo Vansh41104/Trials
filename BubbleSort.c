@@ -1,21 +1,40 @@
 #include<stdio.h>
+//print array function
 void printarray(int* A[],int n){
-    //Printing of the array
     for (int i = 0; i < n; i++){
-       printf("%d  ",A[i]);
+       printf("%d\t",A[i]);
     }
     printf("\n");}
+//bubble sort function
 void BubbleSort(int *A,int n){
-    int swap;
+    int swap,j;
+    
     for (int i = 0; i < n-1; i++){
-        for (int j = 0; j < n-1-i; j++){
+        int swaped=0;
+        for ( j = 0; j < n-1-i; j++){
             if(A[j]>A[j+1]){
-                swap=A[j];
-                A[j]=A[j+1];
-                A[j+1]=swap;}}}}
+                sort(A,j,(j+1));
+                swaped=1;}}
+                if(swaped==0){
+                    break;
+                }}}
+
+//Sort Fuction
+void sort(int *A[],int x,int y){
+    int swap;
+                swap=A[x];
+                A[x]=A[y];
+                A[y]=swap;
+}
+//main function
 int main(){
-    int A[]={56,12,24,1,31,101,1,23,41};
-    int n=sizeof(A)/sizeof(int);
+    int i,n;
+    printf("enter the size of the array\n");
+    scanf("%d",&n);
+    int A[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&A[i]);
+    }
     printarray(A,n);
     BubbleSort(A,n);
     printarray(A,n);
